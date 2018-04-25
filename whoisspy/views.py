@@ -62,6 +62,7 @@ def continue_game(request):
 
 def end_game(request):
 	users = UserProfile.objects.filter(is_active=True)
-	data = {'users':users}
+	spies = users.filter(is_spy=True)
+	data = {'users':users, 'spies':spies}
 	return render(request, 'whoisspy/endgame.html', data)
 
