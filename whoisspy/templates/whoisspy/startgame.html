@@ -1,0 +1,14 @@
+{% extends 'whoisspy/base.html' %}
+{% block content%}
+
+    	<div>
+    		<h2>Number of Spies Amongst You: {{ spy_count }}</h2>
+    	</div>
+    	<div>
+    		{% for user in users %}
+    			<div>
+                <a href="{% url 'viewuser' user_id=user.id %}">{{ user }}</a>
+    			</div>
+    		{% endfor %}
+        </div>
+{% endblock %}
