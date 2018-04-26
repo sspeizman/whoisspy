@@ -1,9 +1,11 @@
 {% extends 'whoisspy/base.html' %}
 {% block content%}
     	<div>
-    		<h2>Your Phrase Is: {{ user.phrase }}</h2>
+    		<h2>{{ user_profile }}</h2>
+    		<h3>Your Phrase Is: {{ user_profile.phrase }}</h3>
     	</div>
-    	<div>
+    	<div><a href="{% url 'game' %}">Back</a></div>
+        <div>
             <form action="" method="POST">
                 {% csrf_token %}
                 <input type="Submit" value="Buh Bye" name="kill">

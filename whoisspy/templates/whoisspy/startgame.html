@@ -5,10 +5,19 @@
     		<h2>Number of Spies Amongst You: {{ spy_count }}</h2>
     	</div>
     	<div>
-    		{% for user in users %}
+    		{% for user_profile in user_profiles %}
     			<div>
-                <a href="{% url 'viewuser' user_id=user.id %}">{{ user }}</a>
+                <a href="{% url 'viewuser' user_id=user_profile.id %}">{{ user_profile.user.first_name }} -
+                {% if user_profile.is_dead %}
+                    {% if user_profile.is_spy %}Dead Spy 
+                    {% else %}Dead Pleb
+                    {% endif %}
+                {% else %}
+                     Alive
+                {% endif %}</a>
     			</div>
     		{% endfor %}
+        <p><div><a href="{% url 'home' %}">Start New Game</a></div>
+        <div><a href="{% url 'endgame' %}">End Game</a></div></p>
         </div>
 {% endblock %}

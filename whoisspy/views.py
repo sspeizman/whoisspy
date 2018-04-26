@@ -18,16 +18,19 @@ def group_view(request, group_id):
 def start_game(request):
 	UserProfile.objects.update(is_active=False)
 	#users = list(UserProfile.objects.filter(id__in=user_ids).order_by('?'))
-	users = UserProfile.objects.all().order_by('?')
-	user_list = list(users)
+	user_profiles = UserProfile.objects.all().order_by('?')
+	user_list = list(user_profiles)
 	user_count = len(user_list)
 	spy_count = math.ceil(user_count/2)-1
 	categories = Category.objects.order_by('?')
 	category = categories[0]
 	phrases = list(Phrase.objects.filter(category=category).order_by('?'))
 	spy_word = phrases[0]
+	print(spy_word)
 	plebe_word = phrases[1]
+	print(plebe_word)
 	spies = user_list[0:spy_count]
+	print(spies)
 	for spy in spies:
 		spy.is_spy=True
 		spy.phrase=spy_word
@@ -39,25 +42,26 @@ def start_game(request):
 		plebe.phrase=plebe_word
 		plebe.is_active=True
 		plebe.save()
-	data = {'spy_count':spy_count, 'users':users.order_by('?')}
+	data = {'spy_count':spy_count, 'user_profiles':user_profiles.order_by('?')}
 	return render(request, 'whoisspy/startgame.html', data)
 
 def view_user(request, user_id):
-	user = UserProfile.objects.get(id=user_id)
+	user_profile = UserProfile.objects.get(id=user_id)
 	if request.method=="POST":
-		user.is_dead=True
-		user.save()
+		user_profile.is_dead=True
+		user_profile.save()
 		print(request.POST.get('kill'))
 		return redirect(reverse('game'))
-	data = {'user':user}
+	data = {'user_profile':user_profile}
 	return render(request, 'whoisspy/viewuser.html', data)
 
 def continue_game(request):
-	users = UserProfile.objects.filter(is_active=True)
-	spy_count = users.filter(is_spy=True).filter(is_dead=False).count()
+	user_profiles = UserProfile.objects.filter(is_active=True)
+	spy_count = user_profiles.filter(is_spy=True).filter(is_dead=False).count()
+	print(spy_count)
 	if spy_count==0:
 		return redirect(reverse('endgame'))
-	data = {'users':users, 'spy_count':spy_count}
+	data = {'user_profiles':user_profiles, 'spy_count':spy_count}
 	return render(request, 'whoisspy/startgame.html', data)
 
 def end_game(request):
