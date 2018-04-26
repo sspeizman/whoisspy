@@ -11,14 +11,11 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-from local_settings import BASE_DIR, SECRET_KEY, DEBUG, ALLOWED_HOSTS, TEMPLATE_DIRS, DATABASES, ADMINS
-from local_settings import STATIC_ROOT, STATICFILES_DIRS, STATIC_URL
+from .local_settings import BASE_DIR, SECRET_KEY, DEBUG, ALLOWED_HOSTS, TEMPLATEDIRS, DATABASES, ADMINS
+from .local_settings import STATIC_ROOT, STATICFILES_DIRS, STATIC_URL
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
 
 # Application definition
@@ -45,21 +42,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'django_whoisspy.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
 
 WSGI_APPLICATION = 'django_whoisspy.wsgi.application'
 
@@ -67,12 +49,7 @@ WSGI_APPLICATION = 'django_whoisspy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+
 
 
 # Password validation
@@ -111,5 +88,3 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')

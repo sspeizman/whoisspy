@@ -2,6 +2,8 @@
 *~
 __pycache__
 venv
+local_settings.py
+/django_whoisspy/local_settings.py
 db.sqlite3
 /static
 .DS_Store

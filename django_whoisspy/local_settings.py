@@ -5,14 +5,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(rrz-^00m6nklzzc(47s^)(jkzz@+nj)bzx1-gbt5b6y136bf#'
+SECRET_KEY = 'nn#%r&upgd&be6^2z=+a+6x&)=-9d57bp-%8=!*w$idewhk&kd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [
-    '.whoisspy.club'
-]
+ALLOWED_HOSTS = ['127.0.0.1',]
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -20,19 +18,30 @@ ALLOWED_HOSTS = [
 SITE_ID = 1
 
 # For production version
-TEMPLATEDIRS = ['/home/acounsel/webapps/django_whoispy/django_whoisspy/whoisspy/templates']
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 # For production version
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'whoisspy',
-        'USER': 'whoisspy',
-        'PASSWORD': '22vZQu6KmHSG',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 ADMINS = (
     ('Samer', 'samer@accountabilitycounsel.org'),
@@ -40,15 +49,5 @@ ADMINS = (
 )
 
 
-STATICFILES_DIRS = (
-    '/home/acounsel/webapps/django_whoispy/django_whoisspy/static/',
-)
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = '/home/acounsel/webapps/whoisspy_static/'
-
-
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATIC_URL =  '/home/acounsel/webapps/whoisspy_static'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
