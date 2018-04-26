@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-from .local_settings import BASE_DIR, SECRET_KEY, DEBUG, ALLOWED_HOSTS, TEMPLATEDIRS, DATABASES, ADMINS
-from .local_settings import STATIC_ROOT, STATICFILES_DIRS, STATIC_URL
+from .local_settings import BASE_DIR, SECRET_KEY, DEBUG, ALLOWED_HOSTS, TEMPLATES, DATABASES, ADMINS
+from .local_settings import STATICFILES_DIRS, STATIC_URL
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
