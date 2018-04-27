@@ -4,11 +4,14 @@
     		<h2>Your Group Is: {{ group.name }}</h2>
     	</div>
     	<div>
-    		{% for user in users %}
-    			<div>
-    			{{ user }}
-    			</div>
-    		{% endfor %}
-            <p><a href="{% url 'startgame' %}">Start Game</a></p>
+    		<form action="" method="POST">
+                {% csrf_token %}
+                {% for user_profile in user_profiles %}
+    			 <div>
+    			 <input type="checkbox" value={{ user_profile.id }} name="check">{{ user_profile }}
+    			 </div>
+                 {% endfor %}
+            <input type="Submit" value="Start Game" name="start">
+            </form>
     	</div>
 {% endblock %}

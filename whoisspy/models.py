@@ -23,7 +23,7 @@ class Group(models.Model):
 class UserProfile(models.Model):
 	user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 	is_spy = models.BooleanField(default=False)
-	group = models.ForeignKey(Group, blank=True, null=True, on_delete=models.SET_NULL)
+	group = models.ManyToManyField(Group, blank=True)
 	score = models.IntegerField(default=0)
 	is_active = models.BooleanField(default=False)
 	is_dead = models.BooleanField(default=False)

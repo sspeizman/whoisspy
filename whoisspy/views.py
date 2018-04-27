@@ -6,19 +6,29 @@ from .models import Phrase, Category, UserProfile, Group
 
 def home(request):
 	groups = Group.objects.all()
+	UserProfile.objects.update(is_active=False, is_spy=False, is_dead=False)
 	data = {'groups': groups}
 	return render(request, 'whoisspy/home.html', data)
 
 def group_view(request, group_id):
-	group = Group.objects.get(id=group_id)
-	users = UserProfile.objects.filter(group=group)
-	data = {'users': users, 'group': group}
+	try:
+		group = Group.objects.get(id=group_id)
+		user_profiles = UserProfile.objects.filter(group=group)
+	except Group.DoesNotExist:
+		group = None
+		user_profiles = UserProfile.objects.all()
+	if request.method=='POST':
+		selected_ids = request.POST.getlist('check')
+		for selected_id in selected_ids:
+			player = user_profiles.get(id=selected_id)
+			player.is_active=True
+			player.save()
+		return redirect(reverse('startgame'))
+	data = {'user_profiles': user_profiles, 'group': group}
 	return render(request, 'whoisspy/groupview.html', data)
 
 def start_game(request):
-	UserProfile.objects.update(is_active=False)
-	#users = list(UserProfile.objects.filter(id__in=user_ids).order_by('?'))
-	user_profiles = UserProfile.objects.all().order_by('?')
+	user_profiles = UserProfile.objects.filter(is_active=True).order_by('?')
 	user_list = list(user_profiles)
 	user_count = len(user_list)
 	spy_count = math.ceil(user_count/2)-1
