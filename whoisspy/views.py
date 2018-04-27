@@ -68,9 +68,12 @@ def view_user(request, user_id):
 def continue_game(request):
 	user_profiles = UserProfile.objects.filter(is_active=True)
 	spy_count = user_profiles.filter(is_spy=True).filter(is_dead=False).count()
+	pleb_count = user_profiles.filter(is_spy=False).filter(is_dead=False).count()
 	print(spy_count)
 	if spy_count==0:
 		return redirect(reverse('endgame'))
+	if pleb_count==0:
+		return redirect(reverse('losegame'))
 	data = {'user_profiles':user_profiles, 'spy_count':spy_count}
 	return render(request, 'whoisspy/startgame.html', data)
 
@@ -79,4 +82,10 @@ def end_game(request):
 	spies = users.filter(is_spy=True)
 	data = {'users':users, 'spies':spies}
 	return render(request, 'whoisspy/endgame.html', data)
+
+def lose_game(request):
+	users = UserProfile.objects.filter(is_active=True)
+	spies = users.filter(is_spy=True)
+	data = {'users':users, 'spies':spies}
+	return render(request, 'whoisspy/losegame.html', data)
 
