@@ -2,13 +2,25 @@
 {% block content%}
     	<div>
     		<h2>{{ user_profile }}</h2>
-    		<h3>Your Phrase Is: {{ user_profile.phrase }}</h3>
+    		<h3>
+                <div id="click" style="cursor:pointer;">View Your Phrase</div>
+                <div class="phrase" style="display:none; padding-top:10px; font-size:30px;">{{ user_profile.phrase }}</div>
+            </h3>
     	</div>
-    	<div><a href="{% url 'game' %}">Back</a></div>
         <div>
             <form action="" method="POST">
                 {% csrf_token %}
                 <input type="Submit" value="Buh Bye" name="kill">
             </form>
     	</div>
+        <div>
+            <a href="{% url 'game' %}">Back</a>
+        </div>
+{% endblock %}
+{% block javascript %}
+    <script>
+    $( "#click" ).click(function() {
+        $( ".phrase" ).slideToggle();
+    });
+    </script>
 {% endblock %}
