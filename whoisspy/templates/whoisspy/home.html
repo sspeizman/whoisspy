@@ -1,12 +1,13 @@
 {% extends 'whoisspy/base.html' %}
 {% block content%}
     	<div>
+            <p class="groupselection">Select a group to play!</p>
     		{% for group in groups %}
-    			<div>
+    			<div class="group">
     			<a href="{% url 'groupview' group_id=group.id %}">{{ group }}</a>
     			</div>
     		{% endfor %}
-                <div>
+                <div class="group">
                 <a href="{% url 'groupview' group_id=0 %}">All</a>
                 </div>
     	</div>

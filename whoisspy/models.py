@@ -32,5 +32,14 @@ class UserProfile(models.Model):
 	def __str__(self):
 		return self.user.first_name
 
+	def get_status_color(self):
+		if self.is_dead:
+			if self.is_spy:
+				return 'red'
+			else:
+				return 'grey'
+		else:
+			return 'green'
+
 
 

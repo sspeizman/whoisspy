@@ -6,7 +6,7 @@
     	</div>
     	<div>
     		{% for user_profile in user_profiles %}
-    			<div>
+    			<div class="playerlinks {{ user_profile.get_status_color }}">
                 <a href="{% url 'viewuser' user_id=user_profile.id %}">{{ user_profile.user.first_name }} -
                 {% if user_profile.is_dead %}
                     {% if user_profile.is_spy %}Dead Spy 

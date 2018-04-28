@@ -7,11 +7,11 @@
     		<form action="" method="POST">
                 {% csrf_token %}
                 {% for user_profile in user_profiles %}
-    			 <div>
-    			 <input type="checkbox" value={{ user_profile.id }} name="check">{{ user_profile }}
-    			 </div>
+                <div class="formcheckbox">
+    			 <input type="checkbox" value={{ user_profile.id }} name="check"><span class="checkboxtext">{{ user_profile }}</span>
+                 </div>
                  {% endfor %}
-            <input type="Submit" value="Start Game" name="start">
+            <input class="submitbutton" type="Submit" value="Start Game" name="start">
             </form>
     	</div>
 {% endblock %}

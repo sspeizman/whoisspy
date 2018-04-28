@@ -1,14 +1,18 @@
+{% load staticfiles %}
 <html>
     <head>
         <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
         <title>Who Is Spy</title>
     </head>
     <body>
-    	<div>
-    		<h1><a href="/">ARE YOU THE SPY???</a></h1>
+        <div class="content">
+    	<div class="titlebox">
+    		<h1 class="maintitle"><a class="titlelink" href="/">Are you the spy???</a></h1>
     	</div>
         {% block content %}
         {% endblock %}
+        </div>
         {% block javascript %}
         {% endblock %}
     </body>
