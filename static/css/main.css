@@ -1,0 +1,76 @@
+.maintitle {
+	text-transform: uppercase;
+	margin: 10px 0;
+
+}
+.titlebox {
+	border-bottom: 1px solid #4d4d4d;
+}
+body {
+	background-color: #dce2ed;
+
+}
+
+a {
+	text-decoration: none;
+
+}
+
+a:visited {
+    color: inherit;
+}
+
+.groupselection {
+	font-size: 20px;
+	color: #4d4d4d;
+}	
+
+.group {
+	padding: 0 0 10px 10px;
+}
+
+.group:hover {
+	text-decoration: underline;
+}
+
+.content {
+	background-color: #f2f4f7;
+	max-width: 600px;
+	margin: 50px auto;
+	padding: 20px;
+	border-radius: 10px;
+}
+.formcheckbox {
+	padding-bottom: 7px;
+}
+.checkboxtext {
+	padding-left: 5px;
+}
+
+.submitbutton {
+	height: 40px;
+	background-color: #3cc47c;
+	border-radius: 4px;
+	font-family: montserrat;
+	font-size: 16px;
+	text-transform: uppercase;
+	padding: 0 10px;
+	margin-top: 30px;
+	cursor: pointer;
+}
+.playerlinks {
+	padding: 0 0 10px 10px;
+	font-size: 16px;
+	letter-spacing: .75px;
+	font-weight: 600;
+}
+
+.red {
+	color: #d35b63;
+}
+.green {
+	color: #75b75b;
+}
+.grey {
+	color: #4d4d4d;
+}
