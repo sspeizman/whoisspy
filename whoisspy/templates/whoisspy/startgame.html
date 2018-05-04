@@ -9,15 +9,15 @@
     			<div class="playerlinks {{ user_profile.get_status_color }}">
                 <a href="{% url 'viewuser' user_id=user_profile.id %}">{{ user_profile.user.first_name }} -
                 {% if user_profile.is_dead %}
-                    {% if user_profile.is_spy %}Dead Spy 
-                    {% else %}Dead Pleb
+                    {% if user_profile.is_spy %}<i class="fas fa-user-secret"></i> 
+                    {% else %}<i class="fas fa-user-slash"></i>
                     {% endif %}
                 {% else %}
-                    <i class="fas fa-user-secret"></i>
+                    <i class="fas fa-user"></i>
                 {% endif %}</a>
     			</div>
     		{% endfor %}
-        <p><div><a href="{% url 'home' %}">Start New Game</a></div>
-        <div><a href="{% url 'endgame' %}">End Game</a></div></p>
+        <p><div><button type="button" class="btn btn-outline-info"><a href="{% url 'home' %}">Start New Game</a></button></div>
+        <div><button type="button" class="btn btn-outline-info"><a href="{% url 'endgame' %}">End Game</a></button></div></p>
         </div>
 {% endblock %}
