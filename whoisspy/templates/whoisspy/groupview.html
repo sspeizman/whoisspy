@@ -1,7 +1,7 @@
 {% extends 'whoisspy/base.html' %}
 {% block content%}
     	<div>
-    		<h2>Your Group Is: {{ group.name }}</h2>
+    		<h2>Your Group Is: <span class="groupname">{{ group.name }}</span></h2>
     	</div>
     	<div>
     		<form action="" method="POST">
@@ -11,7 +11,7 @@
     			 <input type="checkbox" value={{ user_profile.id }} name="check"><span class="checkboxtext">{{ user_profile }}</span>
                  </div>
                  {% endfor %}
-            <input class="submitbutton" type="Submit" value="Start Game" name="start">
+            <input class="btn btn-outline-info" type="Submit" value="Start Game" name="start">
             </form>
     	</div>
 {% endblock %}
