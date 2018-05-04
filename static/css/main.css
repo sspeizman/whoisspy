@@ -1,23 +1,42 @@
+font-family: 'Sanchez', sans-serif;
+
 .maintitle {
 	text-transform: uppercase;
 	margin: 10px 0;
-
 }
+.titlelink {
+	text-transform: uppercase;
+	align: center;
+	color: #4d4d4d;
+	font-family: 'Sanchez', sans-serif;
+}
+	.titlelink:hover {
+		color: #EF5B41;
+		border-style: dotted;
+		border-width: 1px 0 0 0;
+	}
 .titlebox {
 	border-bottom: 1px solid #4d4d4d;
 }
+.homecontent {
+	padding: 20px;
+	font-family: 'Sanchez' sans-serif;
+}
+
 body {
-	background-color: #dce2ed;
+	background: url(https://s3-us-west-1.amazonaws.com/aconsole-static/media/misc/spies.png);
 
 }
 
 a {
 	text-decoration: none;
-
 }
 
 a:visited {
     color: inherit;
+}
+a:hover {
+	text-decoration: none;
 }
 
 .groupselection {
@@ -28,14 +47,13 @@ a:visited {
 .group {
 	padding: 0 0 10px 10px;
 }
-
-.group:hover {
-	text-decoration: underline;
-}
+	.group:hover {
+	color: #008F95;
+	}
 
 .content {
 	background-color: #f2f4f7;
-	max-width: 600px;
+	max-width: 500px;
 	margin: 50px auto;
 	padding: 20px;
 	border-radius: 10px;
@@ -73,4 +91,31 @@ a:visited {
 }
 .grey {
 	color: #4d4d4d;
+}
+
+@media only screen and (max-width: 800px) {
+
+    body {
+    	background-color: #EF5B41;
+	}
+	.homecontent {
+		padding: 10px;
+		font-size: 50px;
+		background-color: #ffffff;
+		border-radius: 3px;
+	}
+	.content {
+		height: 50%;
+		margin: 10px;
+		border-radius: 5px;
+	}
+	.titlelink {
+		font-size: 40px;
+	}
+	.groupselection {
+		font-size: 20px;
+	}
+	.btn {
+		font-size: 13px;
+	}
 }
