@@ -1,15 +1,14 @@
 {% extends 'whoisspy/base.html' %}
 {% block content%}
-    	<div>
-    		<h1>You Caught Em All!</h1>
-    	</div>
-    	<div>
-    		<h2>Who Dem Spies?</h2>
-			{% for spy in spies %}
-    			<div>
-    				{{ spy }}
-    			</div>
-    		{% endfor %}
-
-        </div>
+  <div>
+    <h1>You Caught Em All!</h1>
+  </div>
+  <div>
+    <h2>Who Dem Spies?</h2>
+    {% for spy in spies %}
+      <div>
+        {{ spy }}
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}

@@ -10,7 +10,7 @@ SECRET_KEY = 'nn#%r&upgd&be6^2z=+a+6x&)=-9d57bp-%8=!*w$idewhk&kd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases

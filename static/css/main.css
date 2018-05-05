@@ -86,10 +86,14 @@ a:hover {
 	cursor: pointer;
 }
 .playerlinks {
-	padding: 0 0 10px 10px;
+	padding: 10px;
 	font-size: 16px;
 	letter-spacing: .75px;
 	font-weight: 600;
+	max-width: 100px;
+	border: 1px solid;
+	border-radius: 4px;
+	margin-bottom: 20px;
 }
 .btn {
 	margin-top: 10px;

@@ -1,14 +1,26 @@
 {% extends 'whoisspy/base.html' %}
 {% block content%}
-    	<div class="homecontent">
-            <p class="groupselection">Select a group to play!</p>
-    		{% for group in groups %}
-    			<div class="group">
-    			<button type="button" class="btn btn-outline-info"><a href="{% url 'groupview' group_id=group.id %}">{{ group }}</a></button>
-    			</div>
-    		{% endfor %}
-                <div class="group">
-                <button type="button" class="btn btn-outline-info"><a href="{% url 'groupview' group_id=0 %}">All</a></button>
-                </div>
-    	</div>
+    <div class="homecontent">
+      <p class="groupselection">Select a group to play!</p>
+      {% for group in groups %}
+        <div class="group">
+        <button type="button" class="btn btn-outline-info"><a href="{% url 'groupview' group_id=group.id %}">{{ group }}</a></button>
+        </div>
+      {% endfor %}
+      <div class="group">
+        <button type="button" class="btn btn-outline-info"><a href="{% url 'groupview' group_id=0 %}">All</a></button>
+      </div>
+      <div class="group">
+        <p class="groupselection">Or create custom group:</p>
+        <form action="{% url 'custom-group' %}" method="get">
+          <select name="num_players">
+            {% for option in num_player_options %}
+              <option value={{ option }}>{{ option }}</option>
+            {% endfor %}
+          </select>
+          <input type="submit" class="btn btn-outline-info"><a href="{% url 'custom-group' %}">
+        </form>
+        
+      </div>
+    </div>
 {% endblock %}

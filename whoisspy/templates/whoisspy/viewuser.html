@@ -1,26 +1,33 @@
 {% extends 'whoisspy/base.html' %}
 {% block content%}
-    	<div>
-    		<h2>{{ user_profile }}</h2>
-    		<h3>
-                <div id="click" style="cursor:pointer;">View Your Phrase</div>
-                <div class="phrase" style="display:none; padding-top:10px; font-size:30px;">{{ user_profile.phrase }}</div>
-            </h3>
-    	</div>
-        <div>
-            <form action="" method="POST">
-                {% csrf_token %}
-                <button type="button" class="btn btn-outline-danger"><input type="Submit" value="Kill" name="kill"></button>
-            </form>
-    	</div>
-        <div>
-            <a href="{% url 'game' %}">Back</a>
-        </div>
+  <div>
+    {% if not user_profile.has_identity %}
+    <form action="" method="get">
+      <input type="text" name="change_name" placeholder="Add name here">
+      <input type="submit" value="Submit" name="submit">
+    </form>
+    {% else %}
+    <h2>{{ user_profile }}</h2>
+    {% endif %}
+    <h3>
+      <div id="click" style="cursor:pointer;">View Your Phrase</div>
+      <div class="phrase" style="display:none; padding-top:10px; font-size:30px;">{{ user_profile.phrase }}</div>
+    </h3>
+  </div>
+  <div>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <button type="button" class="btn btn-outline-danger"><input type="Submit" value="Kill" name="kill"></button>
+    </form>
+  </div>
+  <div>
+    <a href="{% url 'game' %}">Back</a>
+  </div>
 {% endblock %}
 {% block javascript %}
-    <script>
-    $( "#click" ).click(function() {
-        $( ".phrase" ).slideToggle();
-    });
-    </script>
+  <script>
+  $( "#click" ).click(function() {
+      $( ".phrase" ).slideToggle();
+  });
+  </script>
 {% endblock %}

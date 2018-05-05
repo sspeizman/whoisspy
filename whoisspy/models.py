@@ -21,7 +21,8 @@ class Group(models.Model):
 		return self.name
 
 class UserProfile(models.Model):
-	user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+	user = models.ForeignKey('auth.User', on_delete=models.SET_NULL, blank=True, null=True)
+	name = models.CharField(max_length=100, blank=True)
 	is_spy = models.BooleanField(default=False)
 	group = models.ManyToManyField(Group, blank=True)
 	score = models.IntegerField(default=0)
@@ -30,7 +31,27 @@ class UserProfile(models.Model):
 	phrase = models.ForeignKey(Phrase, blank=True, null=True, on_delete=models.SET_NULL)
 
 	def __str__(self):
-		return self.user.first_name
+		if self.user:
+			return self.user.get_full_name()
+		elif self.name:
+			return self.name
+		else:
+			return 'Unnamed Player'
+
+	def has_identity(self):
+		if self.user:
+			return True
+		if self.name:
+			return True
+		return False
+
+	def get_display_name(self):
+		if self.user:
+			return self.user.get_full_name()
+		elif self.name:
+			return self.name
+		else:
+			return 'No Name'
 
 	def get_status_color(self):
 		if self.is_dead:
