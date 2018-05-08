@@ -48,7 +48,15 @@ def start_game(request):
 	user_profiles = UserProfile.objects.filter(is_active=True).order_by('?')
 	user_list = list(user_profiles)
 	user_count = len(user_list)
-	spy_count = math.ceil(user_count/2)-1
+	if user_count < 9:
+		spy_count = 2
+	elif user_count < 13:
+		spy_count = 3
+	elif user_count < 17:
+		spy_count = 4
+	else:
+		spy_count = 5
+	# spy_count = math.ceil(user_count/2)-1
 	categories = Category.objects.order_by('?')
 	category = categories[0]
 	phrases = list(Phrase.objects.filter(category=category).order_by('?'))

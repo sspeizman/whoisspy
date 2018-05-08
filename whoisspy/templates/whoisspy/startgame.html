@@ -1,23 +1,22 @@
 {% extends 'whoisspy/base.html' %}
 {% block content%}
-
-    	<div>
-    		<h2>Number of Spies Amongst You: {{ spy_count }}</h2>
-    	</div>
-    	<div>
-    		{% for user_profile in user_profiles %}
-    			<div class="playerlinks {{ user_profile.get_status_color }}">
-                <a href="{% url 'viewuser' user_id=user_profile.id %}">{{ user_profile.get_display_name }} -
-                {% if user_profile.is_dead %}
-                    {% if user_profile.is_spy %}<i class="fas fa-user-secret"></i> 
-                    {% else %}<i class="fas fa-user-slash"></i>
-                    {% endif %}
-                {% else %}
-                    <i class="fas fa-user"></i>
-                {% endif %}</a>
-    			</div>
-    		{% endfor %}
-        <p><div><button type="button" class="btn btn-outline-info"><a href="{% url 'home' %}">Start New Game</a></button></div>
-        <div><button type="button" class="btn btn-outline-info"><a href="{% url 'endgame' %}">End Game</a></button></div></p>
-        </div>
+  <div>
+    <h2>Number of Spies Amongst You: {{ spy_count }}</h2>
+  </div>
+  <div>
+    {% for user_profile in user_profiles %}
+      <a href="{% url 'viewuser' user_id=user_profile.id %}" class="playerlinks {{ user_profile.get_status_color }}">
+        {{ user_profile.get_display_name }} -
+        {% if user_profile.is_dead %}
+          {% if user_profile.is_spy %}<i class="fas fa-user-secret"></i> 
+          {% else %}<i class="fas fa-user-slash"></i>
+          {% endif %}
+        {% else %}
+          <i class="fas fa-user"></i>
+        {% endif %}
+      </a>
+    {% endfor %}
+    <p><div><button type="button" class="btn btn-outline-info"><a href="{% url 'home' %}">Start New Game</a></button></div>
+    <div><button type="button" class="btn btn-outline-info"><a href="{% url 'endgame' %}">End Game</a></button></div></p>
+    </div>
 {% endblock %}
