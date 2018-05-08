@@ -1,23 +1,34 @@
 {% extends 'whoisspy/base.html' %}
 {% block content%}
 
-    	<div>
-    		<h2>Number of Spies Amongst You: {{ spy_count }}</h2>
-    	</div>
-    	<div>
-    		{% for user_profile in user_profiles %}
-    			<div class="playerlinks {{ user_profile.get_status_color }}">
-                <a href="{% url 'viewuser' user_id=user_profile.id %}">{{ user_profile.get_display_name }} -
-                {% if user_profile.is_dead %}
-                    {% if user_profile.is_spy %}<i class="fas fa-user-secret"></i> 
-                    {% else %}<i class="fas fa-user-slash"></i>
-                    {% endif %}
-                {% else %}
-                    <i class="fas fa-user"></i>
-                {% endif %}</a>
-    			</div>
-    		{% endfor %}
-        <p><div><button type="button" class="btn btn-outline-info"><a href="{% url 'home' %}">Start New Game</a></button></div>
-        <div><button type="button" class="btn btn-outline-info"><a href="{% url 'endgame' %}">End Game</a></button></div></p>
+  <div>
+    <h2>Number of Spies Amongst You: {{ spy_count }}</h2>
+  </div>
+  <div>
+    {% for user_profile in user_profiles %}
+    <button class="btn btn-outline-info playerlinks {{ user_profile.get_status_class }}">
+      <a href="{% url 'viewuser' user_id=user_profile.id %}">{{ user_profile.get_display_name }}
+      {% if user_profile.is_dead %}
+          {% if user_profile.is_spy %}<i class="fas fa-user-secret"></i> 
+          {% else %}<i class="fas fa-user-slash"></i>
+          {% endif %}
+      {% else %}
+          <i class="fas fa-user"></i>
+      {% endif %}
+      </a>
+    </button>
+    {% endfor %}
+    <p>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <button type="button" class="btn btn-outline-info"><a href="{% url 'home' %}">Start New Game</a></button>
+          </div>
+          <div class="col-sm">
+            <button type="button" class="btn btn-outline-info"><a href="{% url 'endgame' %}">End Game</a></button>
+          </div>
         </div>
+      </div>
+    </p>
+    </div>
 {% endblock %}

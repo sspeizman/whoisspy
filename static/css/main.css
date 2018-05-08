@@ -33,11 +33,12 @@ h2 {
 body {
 	background: url(https://s3-us-west-1.amazonaws.com/aconsole-static/media/misc/spies.png);
 	font-family: 'Sanchez' sans-serif;
+	background-size: cover;
 }
 
 a {
 	text-decoration: none;
-	color: none;
+	color: inherit;
 }
 
 a:visited {
@@ -45,6 +46,7 @@ a:visited {
 }
 a:hover {
 	text-decoration: none;
+	color: inherit;
 }
 
 .groupselection {
@@ -90,15 +92,15 @@ a:hover {
 	font-size: 16px;
 	letter-spacing: .75px;
 	font-weight: 600;
-	max-width: 100px;
+	max-width: 280px;
 	border: 1px solid;
 	border-radius: 4px;
 	margin-bottom: 20px;
+	display: block;
 }
-.btn {
-	margin-top: 10px;
+/*.btn {
 	font-family: 'Ubuntu', sans-serif;
-}
+}*/
 .checkboxtext {
 	font-family: 'Ubuntu', sans-serif;
 }
