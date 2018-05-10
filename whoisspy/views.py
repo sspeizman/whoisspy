@@ -33,7 +33,7 @@ def group_view(request, group_id):
 		user_profiles = UserProfile.objects.filter(group=group)
 	except Group.DoesNotExist:
 		group = None
-		user_profiles = UserProfile.objects.all()
+		user_profiles = UserProfile.objects.exclude(group__name='Custom Group')
 	if request.method=='POST':
 		selected_ids = request.POST.getlist('check')
 		for selected_id in selected_ids:

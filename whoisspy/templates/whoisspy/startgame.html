@@ -5,18 +5,29 @@
   </div>
   <div>
     {% for user_profile in user_profiles %}
-      <a href="{% url 'viewuser' user_id=user_profile.id %}" class="playerlinks {{ user_profile.get_status_color }}">
-        {{ user_profile.get_display_name }} -
-        {% if user_profile.is_dead %}
+    <button class="btn btn-outline-info playerlinks {{ user_profile.get_status_class }}">
+      <a href="{% url 'viewuser' user_id=user_profile.id %}">{{ user_profile.get_display_name }}
+      {% if user_profile.is_dead %}
           {% if user_profile.is_spy %}<i class="fas fa-user-secret"></i> 
           {% else %}<i class="fas fa-user-slash"></i>
           {% endif %}
-        {% else %}
+      {% else %}
           <i class="fas fa-user"></i>
-        {% endif %}
+      {% endif %}
       </a>
+    </button>
     {% endfor %}
-    <p><div><button type="button" class="btn btn-outline-info"><a href="{% url 'home' %}">Start New Game</a></button></div>
-    <div><button type="button" class="btn btn-outline-info"><a href="{% url 'endgame' %}">End Game</a></button></div></p>
+    <p>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <button type="button" class="btn btn-outline-info"><a href="{% url 'home' %}">Start New Game</a></button>
+          </div>
+          <div class="col-sm">
+            <button type="button" class="btn btn-outline-info"><a href="{% url 'endgame' %}">End Game</a></button>
+          </div>
+        </div>
+      </div>
+    </p>
     </div>
 {% endblock %}

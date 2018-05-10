@@ -53,7 +53,7 @@ class UserProfile(models.Model):
 		else:
 			return 'No Name'
 
-	def get_status_color(self):
+	def get_status_class(self):
 		if self.is_dead:
 			if self.is_spy:
 				return 'red'
